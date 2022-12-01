@@ -2,7 +2,7 @@ use std::fs;
 
 fn main() {
     let input = fs::read_to_string("day-01/input.txt").unwrap();
-    let mut elfes: Vec<i32> = input
+    let mut elves: Vec<i32> = input
         .split("\n\n")
         .map(|text| {
             text.lines()
@@ -11,11 +11,11 @@ fn main() {
         })
         .collect();
 
-    elfes.sort();
+    elves.sort();
 
-    let most = elfes.last().unwrap();
+    let most = elves.last().unwrap();
     println!("{most}");
 
-    let last_three: i32 = elfes.iter().rev().take(3).sum();
+    let last_three: i32 = elves.iter().rev().take(3).sum();
     println!("{last_three}");
 }
