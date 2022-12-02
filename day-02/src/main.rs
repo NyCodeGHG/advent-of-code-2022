@@ -48,17 +48,13 @@ fn main() {
             match second.chars().next().unwrap() {
                 'X' => match first_score {
                     1 => 3,
-                    2 => 1,
-                    3 => 2,
-                    _ => panic!(),
+                    i => i - 1,
                 }, // Loose
                 'Y' => first_score + 3, // Draw
                 'Z' => {
                     let score = match first_score {
-                        1 => 2,
-                        2 => 3,
                         3 => 1,
-                        _ => panic!(),
+                        i => i + 1,
                     };
                     score + 6
                 } // Win
