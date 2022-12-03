@@ -1,7 +1,7 @@
 use std::fs;
 
 fn main() {
-    let input = fs::read_to_string("day-02/input.txt").unwrap();
+    let input = fs::read_to_string("inputs/day2.txt").unwrap();
     let total: i32 = input
         .lines()
         .map(|line| {

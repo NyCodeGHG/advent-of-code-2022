@@ -1,7 +1,7 @@
 use std::fs;
 
 fn main() {
-    let input = fs::read_to_string("day-01/input.txt").unwrap();
+    let input = fs::read_to_string("inputs/day1.txt").unwrap();
     let mut elves: Vec<i32> = input
         .split("\n\n")
         .map(|text| {

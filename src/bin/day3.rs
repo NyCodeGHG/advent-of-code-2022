@@ -1,7 +1,7 @@
 use std::fs;
 
 fn main() {
-    let input = fs::read_to_string("day-03/input.txt").unwrap();
+    let input = fs::read_to_string("inputs/day3.txt").unwrap();
     let priorities: u64 = input
         .lines()
         .map(|line| {
