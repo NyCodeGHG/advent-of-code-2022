@@ -1,3 +1,5 @@
+#![feature(iter_array_chunks)]
+
 use std::{fs, str::FromStr};
 
 fn main() {
@@ -67,8 +69,8 @@ fn parse_input() -> (Vec<Vec<char>>, Vec<Move>) {
         .skip(1)
         .map(|line| {
             line.chars()
-                .collect::<Vec<_>>()
-                .chunks(4)
+                .chain(std::iter::once(' '))
+                .array_chunks::<4>()
                 .map(parse_crate)
                 .collect::<Vec<_>>()
         })
@@ -92,7 +94,7 @@ fn parse_input() -> (Vec<Vec<char>>, Vec<Move>) {
     (columns, moves)
 }
 
-fn parse_crate(line: &[char]) -> Option<char> {
+fn parse_crate(line: [char; 4]) -> Option<char> {
     if line.iter().all(|char| char.is_whitespace()) {
         return None;
     }

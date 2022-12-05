@@ -1,3 +1,5 @@
+#![feature(iter_array_chunks)]
+
 use std::fs;
 
 fn main() {
@@ -9,15 +11,14 @@ fn main() {
             find_common_char_priority(&[first, second]).unwrap()
         })
         .sum();
-    println!("{}", priorities);
+    println!("{priorities}");
 
     let priorities: u64 = input
         .lines()
-        .collect::<Vec<_>>()
-        .chunks(3)
-        .map(|rucksacks| find_common_char_priority(rucksacks).unwrap())
+        .array_chunks::<3>()
+        .map(|rucksacks| find_common_char_priority(&rucksacks).unwrap())
         .sum();
-    println!("{}", priorities);
+    println!("{priorities}");
 }
 
 fn find_common_char_priority(lines: &[&str]) -> Option<u64> {

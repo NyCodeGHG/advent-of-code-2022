@@ -6,13 +6,13 @@ fn main() {
         .lines()
         .filter(|line| matches_range(line, false))
         .count();
-    println!("{}", a);
+    println!("{a}");
 
     let a = input
         .lines()
         .filter(|line| matches_range(line, true))
         .count();
-    println!("{}", a);
+    println!("{a}");
 }
 
 fn matches_range(line: &str, include_overlaps: bool) -> bool {
