@@ -53,12 +53,12 @@ impl<const NODES: usize> Positions<NODES> {
         let diff_y = (previous_knot.1 - knot.1).clamp(-2, 2);
 
         if diff_x.abs() + diff_y.abs() > 2 {
-            knot.0 += diff_x.clamp(-1, 1);
-            knot.1 += diff_y.clamp(-1, 1);
+            knot.0 += diff_x.signum();
+            knot.1 += diff_y.signum();
         } else if diff_x.abs() > 1 {
-            knot.0 += diff_x.clamp(-1, 1);
+            knot.0 += diff_x.signum();
         } else if diff_y.abs() > 1 {
-            knot.1 += diff_y.clamp(-1, 1);
+            knot.1 += diff_y.signum();
         }
 
         if is_last {
