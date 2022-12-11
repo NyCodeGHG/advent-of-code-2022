@@ -2,6 +2,8 @@
 
 use std::{fs, str::FromStr};
 
+const TARGET_CYCLES: &[usize] = &[20, 60, 100, 140, 180, 220];
+
 fn main() {
     let input = fs::read_to_string("inputs/day10.txt").unwrap();
     let registers: Vec<i32> = input
@@ -24,10 +26,7 @@ fn main() {
         .iter()
         .enumerate()
         .filter_map(|(index, value)| {
-            if vec![20, 60, 100, 140, 180, 220]
-                .into_iter()
-                .any(|v| v - 1 == index)
-            {
+            if TARGET_CYCLES.iter().any(|v| *v == index + 1) {
                 Some(*value as usize * (index + 1))
             } else {
                 None
